@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: #0b0d12;
+  color: #e6e8ee;
+  min-height: 100vh;
+}
+
+body {
+  font-feature-settings: "ss01", "ss02", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #222734;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2c3242;
+}
+
+/* Syntax highlighter overrides */
+pre[class*="language-"],
+code[class*="language-"] {
+  background: transparent !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+}
+
+/* Subtle gradient backdrop */
+.bg-app {
+  background:
+    radial-gradient(1100px 600px at 80% -10%, rgba(124, 92, 255, 0.12), transparent 60%),
+    radial-gradient(800px 500px at -10% 110%, rgba(56, 189, 248, 0.08), transparent 60%),
+    #0b0d12;
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(22, 26, 35, 0.6) 0%, rgba(17, 20, 27, 0.6) 100%);
+  backdrop-filter: blur(8px);
+  border: 1px solid #222734;
+}
+
+.btn {
+  @apply inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition;
+}
+.btn-primary {
+  @apply bg-accent text-white hover:bg-accent-hover;
+}
+.btn-ghost {
+  @apply text-ink-muted hover:text-ink hover:bg-bg-elevated;
+}
+.btn-icon {
+  @apply p-2 rounded-md text-ink-muted hover:text-ink hover:bg-bg-elevated transition;
+}
+
+.kbd {
+  @apply inline-flex h-5 min-w-[20px] items-center justify-center rounded border border-bg-border bg-bg-elevated px-1.5 text-[10px] font-mono text-ink-muted;
+}
+
+.tag-chip {
+  @apply inline-flex items-center gap-1 rounded-md border border-bg-border bg-bg-elevated px-2 py-0.5 text-xs text-ink-muted;
+}
+
+.input {
+  @apply w-full rounded-lg border border-bg-border bg-bg-elevated px-3 py-2 text-sm text-ink placeholder:text-ink-dim focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent-glow;
+}
+
+.fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pulsing dot for active AI search */
+.pulse-dot {
+  position: relative;
+}
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: rgba(124, 92, 255, 0.4);
+  animation: pulse 1.4s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
